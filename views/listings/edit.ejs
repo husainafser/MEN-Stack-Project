@@ -1,0 +1,33 @@
+<% layout("./layouts/common.ejs") %>
+<body>
+    <form action="/listings/<%= list._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input type="text" name="title" id="" placeholder="Enter Title" class="form-control" value="<%= list.title %>" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input type="text" name="description" id="" placeholder="Enter Description" class="form-control" value="<%= list.description %>" >
+          </div>
+          <div class="mb-3 d-flex">
+            <!-- <label for="exampleInputEmail1" class="form-label">Upload Image</label> -->
+            <input type="file" name="image" id="" class="form-control">
+            <img src="<%= replacingImageUrl %>" alt="" class="float-end">
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Price</label>
+            <input type="number" name="price" id="" placeholder="Enter Price" class="form-control" value="<%= list.price %>" >
+          </div>
+          
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class=" form-label">Location & Country</label>
+            <div class="input-group">
+                <input type="text" name="location" id="" placeholder="Enter Location" class="form-control" value="<%= list.location %>" >
+                <input type="text" name="country" id="" placeholder="Enter Country" class="form-control" value="<%= list.country %>" >
+            </div>
+          </div>
+        
+        <button type="submit" class="btn btn-warning d-flex mx-auto px-5">Update</button>
+      </form>
+</body>

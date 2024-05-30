@@ -1,0 +1,69 @@
+<% layout("./layouts/common.ejs") %>
+<body>
+  <div class="container-fluid py-3">
+    <div class="navbar">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+        <form method="GET" action="/listings">
+          <button class="nav-link " type="submit" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa-solid fa-house"></i><br>All</button>
+        </form>
+        </li>
+        <li class="nav-item" role="presentation">
+            <form method="POST" action="/listings/Amazing pools">
+          <button class="nav-link <%= category=='Amazing pools' ? 'active' : '' %>" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-filter" type="submit" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa-solid fa-person-swimming"></i><br>Amazing pools</button>
+        </form>
+        </li>
+        <li class="nav-item" role="presentation">
+          <form method="POST" action="/listings/Amazing Views">
+            <button type="submit" class="nav-link <%= category=='Amazing Views' ? 'active' : '' %>" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-filter" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa-solid fa-mountain-sun"></i><br>Amazing views</button>
+          </form>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link " id="pills-four-tab" data-bs-toggle="pill" data-bs-target="#pills-four" type="button" role="tab" aria-controls="pills-four" aria-selected="false"><i class="fa-solid fa-tractor"></i><br>Farms</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-five-tab" data-bs-toggle="pill" data-bs-target="#pills-five" type="button" role="tab" aria-controls="pills-five" aria-selected="false"><i class="fa-solid fa-bowl-food"></i><br>Luxe</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-six-tab" data-bs-toggle="pill" data-bs-target="#pills-six" type="button" role="tab" aria-controls="pills-six" aria-selected="false"><i class="fa-solid fa-water"></i><br>Lakefront</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link " id="pills-seven-tab" data-bs-toggle="pill" data-bs-target="#pills-seven" type="button" role="tab" aria-controls="pills-seven" aria-selected="false"><i class="fa-solid fa-tree"></i><br>Islands</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-eight-tab" data-bs-toggle="pill" data-bs-target="#pills-eight" type="button" role="tab" aria-controls="pills-eight" aria-selected="false"><i class="fa-brands fa-fort-awesome"></i><br>Castles</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-nine-tab" data-bs-toggle="pill" data-bs-target="#pills-nine" type="button" role="tab" aria-controls="pills-nine" aria-selected="false"><i class="fa-solid fa-umbrella-beach"></i><br>Beachfront</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-nine-tab" data-bs-toggle="pill" data-bs-target="#pills-nine" type="button" role="tab" aria-controls="pills-nine" aria-selected="false"><i class="fa-solid fa-campground"></i><br>Camping</button>
+        </li>
+      </ul>
+      <form class="d-flex pb-4" role="search" action="/listings/search" method="POST">
+        <input class="form-control me-2 border rounded-pill" type="search" placeholder="Search" name="search" value="<%= typeof search !== 'undefined' ? search : '' %>" aria-label="Search">
+        <button class="btn btn-outline-danger border rounded-pill" type="submit">Search</button>
+      </form>
+    </div>
+    
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <% if (typeof catlist !== 'undefined' && catlist.length > 0) { %>
+                <% for (const listing of catlist) { %>
+                  <div class="col">
+                    <div class="card">
+                      <img src="<%= listing.image.url %>" class="card-img-top w-100" style="height: 20rem;" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="/listings/<%= listing._id %>"><%= listing.title %></a></h5>
+                        <p class="card-text"><%= listing.description %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                  <% } %>
+        </div>
+      </div>
+  </div>
+    
+</body>

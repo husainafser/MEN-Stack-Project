@@ -1,7 +1,6 @@
 const express = require("express");
 const app=express();
 require("dotenv").config();
-const {cloudinary,storage} = require("../Airbnb/cloudConfig.js");
 const Listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
 const user = require("./routes/user.js");

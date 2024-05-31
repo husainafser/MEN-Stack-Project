@@ -73,6 +73,7 @@ node app.js
 ```
 
 The application will be locally running at `http://localhost:8080/listings`.
+The application is live running at `men-stack-project.onrender.com/listings`.
 
 ## Usage
 
